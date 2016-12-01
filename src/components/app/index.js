@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        Badger
+        Home world of House Atreides
       </div>
     )
   }

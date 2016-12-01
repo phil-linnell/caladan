@@ -1,23 +1,19 @@
 project_name := caladan
-project_namespace := phillinnell/$(project_name)
 
-DOCKER := docker
+app-build:
+	docker build -t $(project_name) -f Dockerfile .
 
-.PHONY: \
-  app-rm \
-  app-build \
+app-run:
+	docker run --name $(project_name)_app -d -p 8080:8080 $(project_name)
 
-create:
-	$(DOCKER) build -t $(project_namespace) .
+app-rm:
+	docker rm -vf $(project_name)_app
 
-spin:
-	$(DOCKER) run -d --name $(project_name) $(project_namespace)
+app-compile:
+	docker exec $(project_name)_app npm run compile
 
-rm:
-	@$(DOCKER) rm -vf $(project_name)
+inside-image:
+	docker run --rm -it $(project_name) bash
 
-inside:
-	$(DOCKER) run --rm -it $(project_namespace) bash
-
-start:
-	$(DOCKER) run -p 10191:8080 $(project_namespace) npm start
+inside-container:
+	docker exec -it $(project_name)_app bash

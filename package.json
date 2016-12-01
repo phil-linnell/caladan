@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Node.js on Docker with React and Webpack",
   "author": "Phil Linnell",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "compile": "webpack"
