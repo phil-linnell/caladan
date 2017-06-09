@@ -3,4 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './components/app';
 
-ReactDOM.render(<App />, document.querySelector('.wrapper'));
+ReactDOM.render(
+  <App />,
+  document.querySelector('.app-wrapper')
+);

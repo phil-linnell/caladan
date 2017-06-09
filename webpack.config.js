@@ -1,21 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const PATHS = {
-  src: path.join(__dirname, './src/entry.js'),
-  public: path.join(__dirname, 'public')
-}
-
 module.exports = {
-  entry: './src/entry.js',
+  entry: './src/spa/index.js',
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'public/'),
     filename: 'bundle.js'
   },
   module: {
     preLoaders: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader'
       }

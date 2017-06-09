@@ -1,0 +1,19 @@
+FROM node:6.9.1-slim
+
+ENV TERM xterm-256color
+ENV SHELL /bin/bash
+
+RUN mkdir home/public
+
+COPY package.json tmp/package.json
+RUN cd tmp && npm install --production
+RUN cp -a tmp/node_modules/ home/ && rm -R /tmp/node_modules/
+
+COPY . /home
+WORKDIR /home
+
+COPY src/server/index.html public/index.html
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
